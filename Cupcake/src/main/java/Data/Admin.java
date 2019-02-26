@@ -9,12 +9,11 @@ package Data;
  *
  * @author simon
  */
-public class User {
-    private String username;
-    private String password;
-
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
+public class Admin extends User{
+    
+    private boolean admin;
+    public Admin(String username, String password, boolean admin) {
+        super(username, password);
+        this.admin = admin;
     }
 }
