@@ -5,6 +5,7 @@
  */
 package Logic;
 
+import Data.Recipe;
 import Data.User;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,7 +19,10 @@ import logic.DBConnector;
  */
 public class DataAccessObject_Impl {
     
-    
+    public static void main(String[] args) {
+        DataAccessObject_Impl g = new DataAccessObject_Impl();
+        g.getRecipes("lol", "p", "g");
+    }
     public User getUser(String username) {
         User u = null;
         try {
@@ -65,6 +69,25 @@ public class DataAccessObject_Impl {
             return null;
         }
     }
+    public ArrayList<Recipe> getRecipes(String name,String toppings,String bottom) {
+        try {
+            DBConnector c = new DBConnector();
 
-    
+            String query = "SELECT Name, Toppings, Bottom FROM `cupcake`.`CupcakeRecipes`;";
+            ArrayList<Recipe> recipes = new ArrayList<>();
+            Connection connection = c.getConnection();
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                name = rs.getString("Name");
+                toppings = rs.getString("Toppings");
+                bottom = rs.getString("Bottom");
+                recipes.add(new Recipe(name, toppings, bottom));
+            }
+            return recipes;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
 }

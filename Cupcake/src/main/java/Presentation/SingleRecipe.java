@@ -5,6 +5,7 @@
  */
 package Presentation;
 
+import Logic.DataAccessObject_Impl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,9 +18,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author simon
  */
-@WebServlet(name = "Controller", urlPatterns = {"/Controller"})
-public class Controller extends HttpServlet {
-
+@WebServlet(name = "SingleRecipe", urlPatterns = {"/SingleRecipe"})
+public class SingleRecipe extends HttpServlet {
+DataAccessObject_Impl d = new DataAccessObject_Impl();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,11 +38,14 @@ public class Controller extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Controller</title>");            
+            out.println("<title>Servlet SingleRecipe</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Controller at " + request.getContextPath() + "</h1>");
-            
+            out.println("<h1>Servlet SingleRecipe at " + request.getContextPath() + "</h1>");
+            String name = request.getParameter("name");
+            String toppings = request.getParameter("toppings");
+            String bottom = request.getParameter("bottom");
+            out.println("recipe: " + d.getRecipes(name, toppings, bottom));
             out.println("</body>");
             out.println("</html>");
         }
