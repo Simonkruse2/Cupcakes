@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
 import logic.DBConnector;
 
 /**
@@ -18,11 +19,11 @@ import logic.DBConnector;
  * @author simon
  */
 public class DataAccessObject_Impl {
-    
+
     public static void main(String[] args) {
         DataAccessObject_Impl g = new DataAccessObject_Impl();
-        g.getRecipes("lol", "p", "g");
     }
+
     public User getUser(String username) {
         User u = null;
         try {
@@ -33,7 +34,7 @@ public class DataAccessObject_Impl {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-           
+
                 String password = rs.getString("password");
                 u = new User(username, password);
 
@@ -44,7 +45,7 @@ public class DataAccessObject_Impl {
             return null;
         }
     }
-    
+
     public ArrayList<User> getUsers() {
 
         try {
@@ -69,20 +70,21 @@ public class DataAccessObject_Impl {
             return null;
         }
     }
-    public ArrayList<Recipe> getRecipes(String name,String toppings,String bottom) {
+
+    public ArrayList<Recipe> getRecipes(String name) {
         try {
             DBConnector c = new DBConnector();
 
-            String query = "SELECT Name, Toppings, Bottom FROM `cupcake`.`CupcakeRecipes`;";
+            String query = "SELECT Name, Toppings, Bottom FROM `cupcake`.`CupcakeRecipes` WHERE Name LIKE " + name;
             ArrayList<Recipe> recipes = new ArrayList<>();
             Connection connection = c.getConnection();
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                name = rs.getString("Name");
-                toppings = rs.getString("Toppings");
-                bottom = rs.getString("Bottom");
-                recipes.add(new Recipe(name, toppings, bottom));
+                String cName = rs.getString("Name");
+                String toppings = rs.getString("Toppings");
+                String bottom = rs.getString("Bottom");
+                recipes.add(new Recipe(cName, toppings, bottom));
             }
             return recipes;
         } catch (Exception ex) {

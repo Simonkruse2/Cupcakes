@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presentation;
 
-import Logic.DataAccessObject_Impl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author simon
  */
-@WebServlet(name = "SingleRecipe", urlPatterns = {"/SingleRecipe"})
-public class SingleRecipe extends HttpServlet {
-DataAccessObject_Impl d = new DataAccessObject_Impl();
+@WebServlet(urlPatterns = {"/TestServlet"})
+public class TestServlet extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,14 +36,10 @@ DataAccessObject_Impl d = new DataAccessObject_Impl();
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SingleRecipe</title>");            
+            out.println("<title>Servlet TestServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SingleRecipe at " + request.getContextPath() + "</h1>");
-            String name = request.getParameter("name");
-            String toppings = request.getParameter("toppings");
-            String bottom = request.getParameter("bottom");
-            out.println("recipe: " + d.getRecipes(name, toppings, bottom));
+            out.println("<h1>Servlet TestServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
