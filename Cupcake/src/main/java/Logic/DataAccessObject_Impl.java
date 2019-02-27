@@ -56,7 +56,7 @@ public class DataAccessObject_Impl {
                 String username = rs.getString("username");
                 String password = rs.getString("password");
                 boolean admin = rs.getBoolean("admin");
-                team.add(new User(userID, username, password, admin));
+                team.add(new User(username, password));
 
             }
             return team;
