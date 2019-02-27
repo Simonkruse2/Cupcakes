@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logic;
+package pLogic;
 
 import Data.Recipe;
 import Data.User;
@@ -11,8 +11,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import javax.servlet.http.HttpServletRequest;
-import logic.DBConnector;
+import pLogic.DBConnector;
 
 /**
  *
@@ -75,16 +74,16 @@ public class DataAccessObject_Impl {
         try {
             DBConnector c = new DBConnector();
 
-            String query = "SELECT Name, Toppings, Bottom FROM `cupcake`.`CupcakeRecipes` WHERE Name LIKE " + name;
+            String query = "SELECT Name, Toppings, Bottom FROM `cupcake`.`CupcakeRecipes` WHERE Name LIKE '" + name + "';";
             ArrayList<Recipe> recipes = new ArrayList<>();
             Connection connection = c.getConnection();
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                String cName = rs.getString("Name");
+                String Name = rs.getString("Name");
                 String toppings = rs.getString("Toppings");
                 String bottom = rs.getString("Bottom");
-                recipes.add(new Recipe(cName, toppings, bottom));
+                recipes.add(new Recipe(Name, toppings, bottom));
             }
             return recipes;
         } catch (Exception ex) {
