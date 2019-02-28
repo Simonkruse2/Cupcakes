@@ -6,12 +6,10 @@
 package pLogic;
 
 import Data.Recipe;
-import Data.User;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import pLogic.DBConnector;
 
 /**
  *
@@ -19,62 +17,38 @@ import pLogic.DBConnector;
  */
 public class DataAccessObject_Impl {
 
-    public static void main(String[] args) {
-        DataAccessObject_Impl g = new DataAccessObject_Impl();
-    }
-
-    public User getUser(String username) {
-        User u = null;
-        try {
-            DBConnector c = new DBConnector();
-
-            String query = "SELECT * " + "FROM `user` WHERE username = '" + username + "' ;";
-            Connection connection = c.getConnection();
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-
-                String password = rs.getString("password");
-                u = new User(username, password);
-
-            }
-            return u;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
-        }
-    }
-
-    public ArrayList<User> getUsers() {
-
-        try {
-            DBConnector c = new DBConnector();
-
-            String query = "SELECT * " + "FROM `user`;";
-            ArrayList<User> team = new ArrayList<>();
-            Connection connection = c.getConnection();
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            while (rs.next()) {
-                int userID = rs.getInt("user_id");
-                String username = rs.getString("username");
-                String password = rs.getString("password");
-                boolean admin = rs.getBoolean("admin");
-                team.add(new User(username, password));
-
-            }
-            return team;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
-        }
-    }
-
+//
+//    public Customer getUser() {
+//        Customer cust = null;
+//        try {
+//            DBConnector c = new DBConnector();
+//
+//            String query = "SELECT * FROM `Customers`;";
+//            ArrayList<Customer> customer = new ArrayList<>();
+//            Connection connection = c.getConnection();
+//            Statement stmt = connection.createStatement();
+//            ResultSet rs = stmt.executeQuery(query);
+//            while (rs.next()) {
+//                String _username = rs.getString("'Username'");
+//                String password = rs.getString("'Password'");
+//                int balance = rs.getInt("Balance");
+//                String email = rs.getString("'Email'");
+//                
+//                 cust = new Customer(_username,password,balance, email);
+//
+//            }
+//            System.out.println(cust);
+//            return cust;
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//            return null;
+//        }
+//    }
     public ArrayList<Recipe> getRecipes(String name) {
         try {
             DBConnector c = new DBConnector();
-
-            String query = "SELECT Name, Toppings, Bottom FROM `cupcake`.`CupcakeRecipes` WHERE Name LIKE '" + name + "';";
+     //       String query = "SELECT * FROM cupcake.CupcakeRecipes;";
+          String query = "SELECT Name, Toppings, Bottom FROM `cupcake`.`CupcakeRecipes` WHERE Name LIKE '" + name + "';";
             ArrayList<Recipe> recipes = new ArrayList<>();
             Connection connection = c.getConnection();
             Statement stmt = connection.createStatement();

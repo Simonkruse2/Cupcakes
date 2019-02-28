@@ -42,7 +42,7 @@ public class SingleRecipe extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SingleRecipe</title>");
+            out.println("<title>Servlet SingleRecipe2</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet SingleRecipe at " + request.getContextPath() + "</h1>");
