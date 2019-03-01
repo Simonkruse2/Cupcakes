@@ -20,12 +20,12 @@ import java.util.ArrayList;
 public class DataAccessObject_Impl {
 
 
-    public User getUser(String username) {
+    public ArrayList<User> getUser(String username) {
         User u = null;
         try {
             DBConnector c = new DBConnector();
 
-            String query = "SELECT * FROM `Users`;";
+            String query = "SELECT * FROM `Users` WHERE Name LIKE '" + username + "';";
             ArrayList<User> user = new ArrayList<>();
             Connection connection = c.getConnection();
             Statement stmt = connection.createStatement();
@@ -34,11 +34,11 @@ public class DataAccessObject_Impl {
                 String _username = rs.getString("Username");
                 String password = rs.getString("Password");
                 String email = rs.getString("Email");
-                
+                 
                  u = new User(_username,password, email);
 
             }
-            return u;
+            return user;
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
