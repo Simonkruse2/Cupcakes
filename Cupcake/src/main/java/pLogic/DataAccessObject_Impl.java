@@ -19,7 +19,32 @@ import java.util.ArrayList;
  */
 public class DataAccessObject_Impl {
 
+    
+    public void createCustomer(String username, String password, String email){
+        
+    }
 
+    public boolean checkLogin(String username, String password){
+        String _password = "";
+        try {
+            DBConnector c = new DBConnector();
+
+            String query = "SELECT Password FROM `Users` WHERE Username = '" + username + "';";
+            System.out.println(username);
+            Connection connection = c.getConnection();
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                 _password = rs.getString("Password");
+            }
+            return _password.equals(password);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
+    
     public ArrayList<User> getUser(String username) {
         User u = null;
         try {
