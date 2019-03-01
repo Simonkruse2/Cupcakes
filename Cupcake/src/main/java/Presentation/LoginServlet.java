@@ -35,11 +35,12 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String username = (String) request.getParameter("Username");
-            String password = (String) request.getParameter("Password");
+            String username =  request.getParameter("Username");
+            String password =  request.getParameter("Password");
+            String email =  request.getParameter("Email");
       //      String username = (String) request.getSession().getAttribute("Username");
       //      String password = (String) request.getSession().getAttribute("Password");
-            Boolean valid = d.checkLogin(username, password);
+            d.createCustomer(username, password, email);
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -47,10 +48,27 @@ public class LoginServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
-            out.println("<h1>Username: " + username + "  -  and you are " + (valid? "logged in" : "NOT logged in") +"</h1>");
+            out.println("<h1>Username: " + username + "  -  and you are " + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
+//        try (PrintWriter out = response.getWriter()) {
+//            String username = (String) request.getParameter("Username");
+//            String password = (String) request.getParameter("Password");
+//      //      String username = (String) request.getSession().getAttribute("Username");
+//      //      String password = (String) request.getSession().getAttribute("Password");
+//            Boolean valid = d.checkLogin(username, password);
+//            out.println("<!DOCTYPE html>");
+//            out.println("<html>");
+//            out.println("<head>");
+//            out.println("<title>Servlet LoginServlet</title>");            
+//            out.println("</head>");
+//            out.println("<body>");
+//            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
+//            out.println("<h1>Username: " + username + "  -  and you are " + (valid? "logged in" : "NOT logged in") +"</h1>");
+//            out.println("</body>");
+//            out.println("</html>");
+//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

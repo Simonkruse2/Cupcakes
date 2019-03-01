@@ -10,7 +10,7 @@ package Data;
  * @author simon
  */
 public class Customer extends User{
-    private int balance;
+    private int balance = 0;
 
     public Customer(int balance, String username, String password, String email) {
         super(username, password, email);
