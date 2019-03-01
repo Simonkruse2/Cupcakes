@@ -44,17 +44,78 @@ public class FrontController extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet FrontController at " + request.getContextPath() + "</h1>");
+            out.println("<form method='POST' action=>");
+            out.println("Firstname: <br>");
+            out.println("<input type'text' name='Username' Value='indtast navn'>");
+            out.println(" <br> Password: <br>");
+            out.println("<input type'password' name='Password' Value='indtast kode'><br>");
+            out.println("<input type='submit' value='Submit'");
+            out.println("</form>");
+
             out.println("<p>");
             String name = request.getParameter("Name");
             String toppings = request.getParameter("toppings");
             String bottom = request.getParameter("bottom");
-            out.println("recipe: " + d.getRecipes(name));
+            String price = request.getParameter("price");
+
+            //udskriver recipes -- start
+            out.println("<table>");
+            //overskfiter - start
+            out.println("<tr>");
+            out.println("<th>");
+            out.println("Name");
+            out.println("</th>");
+            out.println("<th>");
+            out.println("Toppings");
+            out.println("</th>");
+            out.println("<th>");
+            out.println("Bottom");
+            out.println("</th>");
+            out.println("<th>");
+            out.println("Choose recipe");
+            out.println("</th>");
+            out.println("<tr>");
+            //overskfiter - slut
+
+            //indhold af recipe - start
+            out.println("<td>");
+            out.println(d.getRecipes(name));
+            out.println("</td>");
+            out.println("<td>");
+            out.println(d.getRecipes(toppings));
+            out.println("</td>");
+            out.println("<td>");
+            out.println(d.getRecipes(bottom));
+            out.println("</td>");
+            //indhold af recipe - start
+
+            //combo-box - start
+            out.println("<td>");
+            out.println("<select name='recipe'>");
+            for (Object recipe : d.getRecipes(name)) {
+                out.println("<option value='+ " + recipe + " +'>");
+                out.println("</option>");
+            }
+                    
+            out.println("</select>");
+            out.println("</td>");
+            //combo-box - slut
+            out.println("</tr>");
+            out.println("</table>");
+
+            //udskriver recipes -- slut
             out.println("</p>");
             out.println("</body>");
             out.println("</html>");
 
             String username = request.getParameter("Username");
             out.println("User: " + d.getUser(username));
+            out.println("<form method='POST' action=?Username=renz@178.62.232.91>");
+            out.println("Choose User:");
+            out.println("<button>");
+            out.println("Renz");
+            out.println("</button>");
+            out.println("</form>");
             /*    
                 HttpSession session = request.getSession();
         Boolean loggedIn = (Boolean) session.getAttribute("loggedIn");
