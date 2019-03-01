@@ -12,8 +12,11 @@ package Data;
 public class Admin extends User{
     
     private boolean admin;
-    public Admin(String username, String password, boolean admin) {
-        super(username, password);
+
+    public Admin(boolean admin, String username, String password, String email) {
+        super(username, password, email);
         this.admin = admin;
     }
+   
+    
 }

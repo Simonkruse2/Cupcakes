@@ -11,13 +11,19 @@ package Data;
  */
 public class Customer extends User{
     private int balance;
-    private String email;
 
-    public Customer(String username, String password, int balance, String email) {
-        super(username, password);
+    public Customer(int balance, String username, String password, String email) {
+        super(username, password, email);
         this.balance = balance;
-        this.email = email;
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" + "balance=" + balance + '}';
+    }
+
+
+
+    
 
 }
