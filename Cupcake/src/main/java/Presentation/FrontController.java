@@ -45,7 +45,7 @@ public class FrontController extends HttpServlet {
             out.println("<body>");
             out.println("<h1>Servlet FrontController at " + request.getContextPath() + "</h1>");
             out.println("<form method='POST' action=>");
-            out.println("Firstname: <br>");
+            out.println("Username: <br>");
             out.println("<input type'text' name='Username' Value='indtast navn'>");
             out.println(" <br> Password: <br>");
             out.println("<input type'password' name='Password' Value='indtast kode'><br>");
