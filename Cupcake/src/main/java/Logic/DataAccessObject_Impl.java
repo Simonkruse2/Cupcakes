@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pLogic;
+package Logic;
 
-import Data.Customer;
 import Data.Recipe;
 import Data.User;
 import java.sql.Connection;
