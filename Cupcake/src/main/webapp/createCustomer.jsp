@@ -1,11 +1,12 @@
 <%-- 
-    Document   : createCustomer
-    Created on : 04-Mar-2019, 13:11:09
-    Author     : simon
+    Document   : makeCustomer
+    Created on : Mar 5, 2019, 11:22:30 AM
+    Author     : vince
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<a href="createCustomer.jsp"></a>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

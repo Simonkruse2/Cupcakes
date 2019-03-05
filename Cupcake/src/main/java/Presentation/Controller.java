@@ -5,7 +5,6 @@
  */
 package Presentation;
 
-import Data.User;
 import Logic.DataAccessObject_Impl;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -17,12 +16,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author simon
+ * @author vince
  */
 @WebServlet(name = "Controller", urlPatterns = {"/Controller"})
 public class Controller extends HttpServlet {
-
-    DataAccessObject_Impl d = new DataAccessObject_Impl();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,67 +30,74 @@ public class Controller extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    DataAccessObject_Impl d = new DataAccessObject_Impl();
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         response.setContentType("text/html;charset=UTF-8");
 
         String origin = request.getParameter("origin");
-
         switch (origin) {
-
-//            case "index":
-//                index(request, response);
-//                break;
-            
+            case "index":
+                index(request, response);
+                break;
             case "login":
                 login(request, response);
                 break;
-
             case "createCustomer":
-                createCustomer(request,response);
+                createCustomer(request, response);
                 break;
-
-            case "invoice":
-                invoice(request,response);
-                break;
-
-            case "shoppingCart":
-                shoppingCart(request,response);
-                break;
-
-            case "admin":
-                admin(request,response);
-                break;
-
             default:
                 throw new AssertionError();
         }
 
+    }
+
+    private void index(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        
-        String username = (String) request.getParameter("Username");
-        String password = (String) request.getParameter("Password");
-        request.getSession().setAttribute("Username", username);
-        request.getSession().setAttribute("Password", password);
-        Boolean valid = d.checkLogin(username, password);
-        
-        switch (valid ? "logged in" : "not logged in") {
-            case "logged in":
-                session.setAttribute("logged in", d.getUser(username));
-                request.getRequestDispatcher("shop.jsp").forward(request, response);
-                break;
-
-            case "not logged in":
-                request.getRequestDispatcher("login.jsp");
-                break;
-            default:
-                throw new AssertionError();
-        }
-
+        request.getRequestDispatcher("login.jsp").forward(request, response);
     }
+
+    private void createCustomer(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("createCustomer.jsp").forward(request, response);
+    }
+    
+//        private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        HttpSession session = request.getSession();
+//        
+//        String username = (String) request.getParameter("Username");
+//        String password = (String) request.getParameter("Password");
+//        request.getSession().setAttribute("Username", username);
+//        request.getSession().setAttribute("Password", password);
+//        Boolean valid = d.checkLogin(username, password);
+//        
+//        switch (valid ? "logged in" : "not logged in") {
+//            case "logged in":
+//                session.setAttribute("logged in", d.getUser(username));
+//                request.getRequestDispatcher("shop.jsp").forward(request, response);
+//                break;
+//
+//            case "not logged in":
+//                request.getRequestDispatcher("login.jsp");
+//                break;
+//            default:
+//                throw new AssertionError();
+//        }
+//
+//    }
+    
+//        private void createCustomer(HttpServletRequest request, HttpServletResponse response) {
+//        String username = (String) request.getParameter("Username");
+//        String password = (String) request.getParameter("Password");
+//        String email = (String) request.getParameter("Email");
+//        
+//        d.createCustomer(username, password, email);
+//        request.getRequestDispatcher("shop.jsp");
+//    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -133,26 +137,5 @@ public class Controller extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private void createCustomer(HttpServletRequest request, HttpServletResponse response) {
-        String username = (String) request.getParameter("Username");
-        String password = (String) request.getParameter("Password");
-        String email = (String) request.getParameter("Email");
-        
-        d.createCustomer(username, password, email);
-        request.getRequestDispatcher("shop.jsp");
-    }
-
-    private void invoice(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void shoppingCart(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void admin(HttpServletRequest request, HttpServletResponse response) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

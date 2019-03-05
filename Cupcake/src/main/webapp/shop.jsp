@@ -1,10 +1,11 @@
 <%-- 
-    Document   : Shop
-    Created on : 04-Mar-2019, 12:39:22
-    Author     : simon
+    Document   : shop
+    Created on : Mar 5, 2019, 12:10:19 PM
+    Author     : vince
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<a href="shop.jsp"></a>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +13,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello asdasdasd!</h1>
+        <h1>Hello World - shop page!</h1>
     </body>
 </html>

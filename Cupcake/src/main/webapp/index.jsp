@@ -1,10 +1,11 @@
 <%-- 
     Document   : index
-    Created on : 04-Mar-2019, 12:49:15
-    Author     : simon
+    Created on : Mar 5, 2019, 11:10:45 AM
+    Author     : vince
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<a href="index.jsp"></a>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,12 +13,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello Cupcake!</h1>
-        
-          <a href="Controller?origin=login" >click here for login</a>
-          <br>
-          <br>
-          <br>
-          <a href="Controller?origin=createCustomer" >click here if you're not already a user</a>
+        <h1>Hello World - index main page!</h1>
+        <a href="Controller?origin=login">click here to login</a>
+        <br>
+        <br>
+        <a href="Controller?origin=createCustomer">click here to create customer</a>
     </body>
 </html>

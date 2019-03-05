@@ -1,20 +1,18 @@
 <%-- 
-    Document   : Login
-    Created on : 04-Mar-2019, 12:16:35
-    Author     : simon
+    Document   : shop
+    Created on : Mar 5, 2019, 12:10:19 PM
+    Author     : vince
 --%>
 
-
-<%@page contentType="text/HTML" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<a href="login.jsp"></a>
 <!DOCTYPE html>
-<html> 
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+    </head>
     <body>
-        <form action="Controller?origin=login" method="post">
-            Username: <input type="text" name="" value=""><br>
-            Password: <input type="text" name="" value=""><br>
-            <input type="submit" value="Submit">
-
-        </form>
-
+        <h1>Hello World - login page!</h1>
     </body>
 </html>
