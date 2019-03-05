@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="Controller?origin=createCustomer" method="post">
+        <form action="?origin=createCustomer" method="post">
             <h1>Hello Customer!</h1>
             Email:    <input type="text" name="" value=""><br>
             Username: <input type="text" name="" value=""><br>

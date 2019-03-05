@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author vince
  */
-@WebServlet(name = "Controller", urlPatterns = {"/Controller"})
+@WebServlet(name = "Cupcake", urlPatterns = {"/Cupcake"})
 public class Controller extends HttpServlet {
 
     /**
