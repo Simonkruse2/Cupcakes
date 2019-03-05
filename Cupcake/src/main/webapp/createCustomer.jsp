@@ -17,7 +17,7 @@
             Email:    <input type="text" name="" value=""><br>
             Username: <input type="text" name="" value=""><br>
             Password: <input type="text" name="" value=""><br>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Create User">
             </body>
         </form>
 </html>
