@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html> 
     <body>
-        <form action="Controller?origin=login" method="post">
+        <form action="?origin=login" method="post">
             Username: <input type="text" name="" value=""><br>
             Password: <input type="text" name="" value=""><br>
             <input type="submit" value="Submit">

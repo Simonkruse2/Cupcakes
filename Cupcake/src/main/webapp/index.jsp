@@ -14,10 +14,10 @@
     <body>
         <h1>Hello Cupcake!</h1>
         
-          <a href="Controller?origin=login" >click here for login</a>
+          <a href="?origin=login" >click here for login</a>
           <br>
           <br>
           <br>
-          <a href="Controller?origin=createCustomer" >click here if you're not already a user</a>
+          <a href="?origin=createCustomer" >click here if you're not already a user</a>
     </body>
 </html>

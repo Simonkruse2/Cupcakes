@@ -19,7 +19,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author simon
  */
-@WebServlet(name = "Controller", urlPatterns = {"/Controller"})
+@WebServlet(name = "Cupcake", urlPatterns = {"/Cupcake"})
 public class Controller extends HttpServlet {
 
     DataAccessObject_Impl d = new DataAccessObject_Impl();
@@ -87,7 +87,7 @@ public class Controller extends HttpServlet {
                 break;
 
             case "not logged in":
-                request.getRequestDispatcher("login.jsp");
+                request.getRequestDispatcher("index.jsp");
                 break;
             default:
                 throw new AssertionError();
@@ -139,7 +139,7 @@ public class Controller extends HttpServlet {
         String password = (String) request.getParameter("Password");
         String email = (String) request.getParameter("Email");
         
-        d.createCustomer(username, password, email);
+       // d.createCustomer(username, password, email);
         request.getRequestDispatcher("shop.jsp");
     }
 
